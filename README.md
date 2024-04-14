@@ -1,1 +1,1 @@
-# skypro-kanban
+# Kanban
