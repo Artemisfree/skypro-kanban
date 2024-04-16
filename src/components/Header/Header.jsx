@@ -1,7 +1,7 @@
-import UserComponent from "./UserComponent"
-import UserLinkButton from "./UserLinkButton"
+import UserComponent from "../User/PopUser"
+import UserLinkButton from "../UserLink/UserLinkButton"
 
-function HeaderDiv() {
+function Header() {
     return (
 			<header className='header'>
 				<div className='container'>
@@ -32,4 +32,4 @@ function HeaderDiv() {
 		)
 }
 
-export default HeaderDiv
+export default Header

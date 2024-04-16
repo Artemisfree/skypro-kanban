@@ -1,21 +1,21 @@
 import './App.css'
-import ExitPopup from './components/ExitPopup'
-import HeaderDiv from './components/HeaderDiv'
-import TaskCreationForm from './components/NewCard'
-import TaskViewForm from './components/TaskView'
-import MainDiv from './components/MainDiv'
+import PopExit from './components/PopExit/PopExit'
+import Header from './components/Header/Header'
+import PopNewCard from './components/PopNewCard/PopNewCard'
+import PopBrowse from './components/PopBrowse/PopBrowse'
+import Main from './components/Main/Main'
 
 function App() {
 
   return (
 		<div className='wrapper'>
 			{/* pop-up start */}
-			<ExitPopup />
-			<TaskCreationForm />
-			<TaskViewForm />
+			<PopExit />
+			<PopNewCard />
+			<PopBrowse />
 			{/* pop-up end */}
-			<HeaderDiv />
-      <MainDiv />
+			<Header />
+      <Main />
 		</div>
 	)
 }

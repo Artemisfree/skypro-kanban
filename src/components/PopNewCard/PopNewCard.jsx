@@ -1,7 +1,6 @@
-import DaysNames from './DaysNames'
-import CalendarCells from './CalendarCells'
+import Calendar from '../Calendar/Calendar'
 
-function TaskCreationForm() {
+function PopNewCard() {
 	return (
 		<div className='pop-new-card' id='popNewCard'>
 			<div className='pop-new-card__container'>
@@ -70,10 +69,7 @@ function TaskCreationForm() {
 											</div>
 										</div>
 									</div>
-									<div className='calendar__content'>
-										<DaysNames />
-										<CalendarCells />
-									</div>
+									<Calendar />
 									<input type='hidden' id='datepick_value' value='08.09.2023' />
 									<div className='calendar__period'>
 										<p className='calendar__p date-end'>
@@ -108,4 +104,4 @@ function TaskCreationForm() {
 	)
 }
 
-export default TaskCreationForm
+export default PopNewCard

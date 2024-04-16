@@ -1,6 +1,6 @@
-import Column from './Column'
+import Column from '../Column/Column'
 
-function MainDiv() {
+function Main() {
     const cardsData = [
 		{
 			id: 1,
@@ -90,4 +90,4 @@ function MainDiv() {
 	)
 }
 
-export default MainDiv
+export default Main

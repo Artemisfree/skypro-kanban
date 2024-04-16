@@ -1,8 +1,6 @@
-import DaysNames from './DaysNames'
-import CalendarCells from './CalendarCells'
+import Calendar from '../Calendar/Calendar'
 
-
-function TaskViewForm() {
+function PopBrowse() {
 	return (
 		<div className='pop-browse' id='popBrowse'>
 			<div className='pop-browse__container'>
@@ -81,10 +79,7 @@ function TaskViewForm() {
 											</div>
 										</div>
 									</div>
-									<div className='calendar__content'>
-										<DaysNames />
-										<CalendarCells />
-									</div>
+									<Calendar />
 									<input
 										type='hidden'
 										id='datepick_value'
@@ -144,4 +139,4 @@ function TaskViewForm() {
     )
 }
 
-export default TaskViewForm
+export default PopBrowse
