@@ -1,10 +1,13 @@
-function Card({ theme, title, date, children }) {
+function Card({ topic, date, status, children }) {
 	return (
 		<div className='cards__item'>
 			<div className='cards__card card'>
 				<div className='card__group'>
-					<div className={`card__theme _${theme}`}>
-						<p className={`_${theme}`}>{title}</p>
+					<div
+						className={`card__theme _${topic.replace(/\s+/g, '').toLowerCase()}`}>
+						<p className={`_${topic.replace(/\s+/g, '').toLowerCase()}`}>
+							{topic}
+						</p>
 					</div>
 					<a href='#popBrowse' target='_self'>
 						<div className='card__btn'>
@@ -49,5 +52,6 @@ function Card({ theme, title, date, children }) {
 		</div>
 	)
 }
+
 
 export default Card

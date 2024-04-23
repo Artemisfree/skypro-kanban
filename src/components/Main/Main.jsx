@@ -1,17 +1,19 @@
 import Column from '../Column/Column'
-import { cardsData, cardsData1, cardsData2 } from './cardsData'
+import { statusList } from './status'
 
-function Main() {
+function Main({ cards }) {
 	return (
 		<main className='main'>
 			<div className='container'>
 				<div className='main__block'>
 					<div className='main__content'>
-						<Column title='Без статуса' cards={cardsData} />
-						<Column title='Нужно сделать' cards={cardsData1} />
-						<Column title='В работе' cards={cardsData2} />
-						<Column title='Тестирование' cards={cardsData1} />
-						<Column title='Готово' cards={cardsData1} />
+						{statusList.map(status => (
+							<Column
+								key={status}
+								title={status}
+								cards={cards.filter(card => card.status === status)}
+							/>
+						))}
 					</div>
 				</div>
 			</div>
