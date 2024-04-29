@@ -1,24 +1,34 @@
+import StyledContainer from "../../Container.styled"
 import UserComponent from "../User/PopUser"
+import { StyledHeader, StyledHeaderBlock , StyledHeaderButton, StyledHeaderNav, StyledLogo } from "./Header.styled"
 
 function Header({ onCardAdd }) {
 	return (
-		<header className='header'>
-			<div className='container'>
-				<div className='header__block'>
-					<div className='header__logo _show _light'>
+		<StyledHeader>
+			{/* <header className='header'> */}
+			<StyledContainer>
+				{/* <div className='container'> */}
+				<StyledHeaderBlock>
+					{/* <div className='header__block'> */}
+					<StyledLogo src='/logo.png' alt='logo' />
+					{/* <div className='header__logo _show _light'>
 						<a href='' target='_self'>
 							<img src='/logo.png' alt='logo' />
 						</a>
-					</div>
-					<div className='header__logo _dark'>
+					</div> */}
+					{/* <div className='header__logo _dark'>
 						<a href='' target='_self'>
 							<img src='/logo_dark.png' alt='logo' />
 						</a>
-					</div>
-					<nav className='header__nav'>
-						<button className='header__btn-main-new _hover01' onClick={onCardAdd}>
+					</div> */}
+					<StyledHeaderNav>
+						{/* <nav className='header__nav'> */}
+						<StyledHeaderButton onClick={onCardAdd}>
 							Создать новую задачу
-						</button>
+						</StyledHeaderButton>
+						{/* <button className='header__btn-main-new _hover01' onClick={onCardAdd}>
+							Создать новую задачу
+						</button> */}
 						{/* <button className='header__btn-main-new _hover01' id='btnMainNew'>
 							<a href='#popNewCard'>Создать новую задачу</a>
 						</button> */}
@@ -26,10 +36,14 @@ function Header({ onCardAdd }) {
 							name={'Ivan Ivanov'}
 							email={'ivan.ivanov@gmail.com'}
 						/>
-					</nav>
-				</div>
-			</div>
-		</header>
+					</StyledHeaderNav>
+					{/* </nav> */}
+				</StyledHeaderBlock>
+				{/* </div> */}
+			</StyledContainer>
+			{/* </div> */}
+		</StyledHeader>
+		// </header>
 	)
 }
 
