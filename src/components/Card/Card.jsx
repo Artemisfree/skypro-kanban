@@ -1,11 +1,17 @@
 import * as S from "./ Card.styled";
+import { useNavigate } from 'react-router-dom'
 import { topicStyles, topicColors } from "./topic";
 
-function Card({ topic, date, status, children }) {
+function Card({ id, topic, date, status, children }) {
+	const navigate = useNavigate()
     const colorStyle = topicStyles[topicColors[topic]] || { backgroundColor: '#b4fdd1', color: '#06b16e' };
 
+    const handleClick = () => {
+			navigate(`/card/${id}`)
+		}
+
     return (
-		<S.CardItem>
+		<S.CardItem onClick={handleClick}>
         {/* <div className='cards__item'> */}
 			<S.StyledCardBlock>
             {/* <div className='cards__card'> */}
