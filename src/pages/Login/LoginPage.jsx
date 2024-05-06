@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../AuthContext';
+import { useAuth } from '../../AuthContext';
+import { ContainerSignIn, Modal, ModalBlock, Modalttl, ModalFormLogIn, ModalInput, ModalButtonEnter, ModalFormGroup } from './Login.styled';
 
 
 function LoginPage() {
@@ -17,15 +18,14 @@ function LoginPage() {
 
     return (
 		<div className='wrapper'>
-			<div className='container-signin'>
-				<div className='modal'>
-					<div className='modal__block'>
-						<div className='modal__ttl'>
-							<h2>Вход</h2>
-						</div>
-						<form className='modal__form-login' onSubmit={handleLogin}>
-							<input
-								className='modal__input'
+			<ContainerSignIn>
+				<Modal>
+					<ModalBlock>
+						<Modalttl>
+							Вход
+						</Modalttl>
+						<ModalFormLogIn onSubmit={handleLogin}>
+							<ModalInput
 								type='text'
 								name='login'
 								id='formlogin'
@@ -33,8 +33,7 @@ function LoginPage() {
 								value={login}
 								onChange={e => setLogin(e.target.value)}
 							/>
-							<input
-								className='modal__input'
+							<ModalInput
 								type='password'
 								name='password'
 								id='formpassword'
@@ -42,17 +41,15 @@ function LoginPage() {
 								value={password}
 								onChange={e => setPassword(e.target.value)}
 							/>
-							<button className='modal__btn-enter _hover01' type='submit'>
-								Войти
-							</button>
-							<div className='modal__form-group'>
+							<ModalButtonEnter type='submit'>Войти</ModalButtonEnter>
+							<ModalFormGroup>
 								<p>Нужно зарегистрироваться?</p>
                                 <Link to='/register'>Регистрируйтесь здесь</Link>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+							</ModalFormGroup>
+						</ModalFormLogIn>
+					</ModalBlock>
+				</Modal>
+			</ContainerSignIn>
 		</div>
 	)
 }

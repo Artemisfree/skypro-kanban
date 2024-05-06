@@ -2,10 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '../../AuthContext'; 
 import PrivateRoute from './PrivateRoute';
 import MainPage from '../../pages/MainPage';
-import LoginPage from '../../pages/LoginPage';
+import LoginPage from '../../pages/Login/LoginPage';
 import RegisterPage from '../../pages/RegisterPage';
-import CardViewPage from '../../pages/CardViewPage';
-import LogoutPage from '../../pages/LogoutPage';
+import CardViewPage from '../../pages/CardView/CardViewPage';
+import LogoutPage from '../../pages/Login/LogoutPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 
 function RouterComponent() {
