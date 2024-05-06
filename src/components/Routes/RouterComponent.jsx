@@ -3,7 +3,7 @@ import { useAuth } from '../../AuthContext';
 import PrivateRoute from './PrivateRoute';
 import MainPage from '../../pages/MainPage';
 import LoginPage from '../../pages/Login/LoginPage';
-import RegisterPage from '../../pages/RegisterPage';
+import RegisterPage from '../../pages/Login/RegisterPage'
 import CardViewPage from '../../pages/CardView/CardViewPage';
 import LogoutPage from '../../pages/Login/LogoutPage';
 import NotFoundPage from '../../pages/NotFoundPage';

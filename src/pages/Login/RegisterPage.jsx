@@ -1,5 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import {
+	ContainerSignIn,
+	Modal,
+	ModalBlock,
+	Modalttl,
+	ModalFormLogIn,
+	ModalInput,
+	ModalButtonEnter,
+	ModalFormGroup,
+} from './Login.styled'
 
 function RegisterPage() {
 	const [firstName, setFirstName] = useState('')
@@ -15,15 +25,18 @@ function RegisterPage() {
 
 	return (
 		<div className='wrapper'>
-			<div className='container-signup'>
-				<div className='modal'>
-					<div className='modal__block'>
-						<div className='modal__ttl'>
+			{/* <div className='container-signup'> */}
+			<ContainerSignIn>
+				{/* <div className='modal'> */}
+				<Modal>
+					{/* <div className='modal__block'> */}
+					<ModalBlock>
+						{/* <div className='modal__ttl'>
 							<h2>Регистрация</h2>
-						</div>
-						<form className='modal__form-login' onSubmit={handleRegistration}>
-							<input
-								className='modal__input first-name'
+						</div> */}
+						<Modalttl>Регистрация</Modalttl>
+						<ModalFormLogIn onSubmit={handleRegistration}>
+							<ModalInput
 								type='text'
 								name='first-name'
 								id='first-name'
@@ -31,8 +44,7 @@ function RegisterPage() {
 								value={firstName}
 								onChange={e => setFirstName(e.target.value)}
 							/>
-							<input
-								className='modal__input login'
+							<ModalInput
 								type='text'
 								name='login'
 								id='loginReg'
@@ -40,8 +52,7 @@ function RegisterPage() {
 								value={email}
 								onChange={e => setEmail(e.target.value)}
 							/>
-							<input
-								className='modal__input password-first'
+							<ModalInput
 								type='password'
 								name='password'
 								id='passwordFirst'
@@ -49,18 +60,24 @@ function RegisterPage() {
 								value={password}
 								onChange={e => setPassword(e.target.value)}
 							/>
-							<button className='modal__btn-signup-ent _hover01' type='submit'>
+							{/* <button className='modal__btn-signup-ent _hover01' type='submit'>
 								Зарегистрироваться
-							</button>
-							<div className='modal__form-group'>
+							</button> */}
+							<ModalButtonEnter type='submit'>
+								Зарегистрироваться
+							</ModalButtonEnter>
+							<ModalFormGroup>
 								<p>
 									Уже есть аккаунт? <Link to='/login'>Войдите здесь</Link>
 								</p>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+							</ModalFormGroup>
+						</ModalFormLogIn>
+					</ModalBlock>
+					{/* </div> */}
+				</Modal>
+				{/* </div> */}
+			</ContainerSignIn>
+			{/* </div> */}
 		</div>
 	)
 }
