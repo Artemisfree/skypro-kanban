@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { cards } from '../../data'
 import { topicColors, topicStyles } from '../../components/Card/topic'
 import { PopBrowse, PopBrowseContainer, PopBrowseBlock, PopBrowseContent, PopBrowseTopBlock, PopBrowseTitle, StyledTextArea } from './CardView.styled'

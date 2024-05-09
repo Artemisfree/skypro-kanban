@@ -14,9 +14,10 @@ function RouterComponent() {
     return (
 		<Routes>
 			<Route element={<PrivateRoute isAuth={isAuthenticated} />}>
-				<Route exact path="/" element={<MainPage />} />
-				<Route path="/exit" element={<LogoutPage />} />
-				<Route path="/card/:id" element={<CardViewPage />} />
+				<Route exact path="/" element={<MainPage />} >
+					<Route path="/exit" element={<LogoutPage />} />
+					<Route path="/card/:id" element={<CardViewPage />} />
+				</Route>
 			</Route>
 			<Route path="/register" element={<RegisterPage />} />
 			<Route path="/login" element={<LoginPage />} />

@@ -1,24 +1,21 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../AuthContext'
+// import { useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
+// import { useAuth } from '../../AuthContext'
+
+import PopExit from "../../components/PopExit/PopExit"
+
 
 
 function LogoutPage() {
-	const { logout } = useAuth()
-    const navigate = useNavigate()
-
-    useEffect(() => {
-            setTimeout(() => {
-                logout()
-                navigate('/login');
-            }, 2000);
-		}, [logout, navigate])
-
 	return (
-		<div>
-			<p>Выход из профиля...</p>
-		</div>
+		<PopExit />
 	)
 }
+	// const { logout } = useAuth()
+    // const navigate = useNavigate()
+
+    // logout()
+    // navigate('/login');
+
 
 export default LogoutPage

@@ -6,6 +6,7 @@ import Header from '../components/Header/Header'
 import PopNewCard from '../components/PopNewCard/PopNewCard'
 import PopBrowse from '../components/PopBrowse/PopBrowse'
 import Main from '../components/Main/Main'
+import { Outlet } from 'react-router-dom'
 
 
 function MainPage() {
@@ -32,16 +33,12 @@ function MainPage() {
 	return (
 		<div className='wrapper'>
 			{/* pop-up start */}
-			<PopExit />
+			{/* <PopExit /> */}
 			<PopNewCard />
-			<PopBrowse />
 			{/* pop-up end */}
 			<Header onCardAdd={onCardAdd} />
-			{isLoading ? (
-				<div className='column__title'>Данные загружаются...</div>
-			) : (
-				<Main cards={cards} />
-			)}
+			{isLoading ? (<div className='column__title'>Данные загружаются...</div>) : (<Main cards={cards} />)}
+			<Outlet />
 		</div>
 	)
 }

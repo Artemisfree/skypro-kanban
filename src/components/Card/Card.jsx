@@ -2,7 +2,7 @@ import * as S from "./ Card.styled";
 import { useNavigate } from 'react-router-dom'
 import { topicStyles, topicColors } from "./topic";
 
-function Card({ id, topic, date, status, children }) {
+function Card({ id, topic, date, children }) {
 	const navigate = useNavigate()
     const colorStyle = topicStyles[topicColors[topic]] || { backgroundColor: '#b4fdd1', color: '#06b16e' };
 
@@ -36,13 +36,11 @@ function Card({ id, topic, date, status, children }) {
 					</S.StyledCardGroup>
 					<S.StyledCardContent>
 					{/* <div className='card__content'> */}
-						<a href='' target='_blank'>
 							<S.StyledCardTitle>
 							{/* <h3 className='card__title'> */}
 								{children}
 							{/* </h3> */}
 							</S.StyledCardTitle>
-						</a>
 						<div className='card__date'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'

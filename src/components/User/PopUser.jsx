@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function UserComponent({ name, email }) {
 	const [isVisible, setIsVisible] = useState(false)
@@ -25,7 +26,7 @@ function UserComponent({ name, email }) {
 							<input type='checkbox' className='checkbox' name='checkbox' />
 						</div>
 						<button type='button' className='_hover03'>
-							<a href='#popExit'>Выйти</a>
+							<Link to='/exit' >Выйти</Link>
 						</button>
 					</div>
 				)}

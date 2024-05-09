@@ -11,7 +11,7 @@ function PopExit() {
 					<form className='pop-exit__form' id='formExit' action='#'>
 						<div className='pop-exit__form-group'>
 							<button className='pop-exit__exit-yes _hover01'>
-								<Link to='/exit'>Да, выйти</Link>
+								<Link to='/login'>Да, выйти</Link>
 							</button>
 							<button className='pop-exit__exit-no _hover03'>
 								<Link to='/'>Нет, остаться</Link>
