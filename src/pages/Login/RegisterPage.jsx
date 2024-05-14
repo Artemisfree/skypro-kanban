@@ -10,17 +10,36 @@ import {
 	ModalButtonEnter,
 	ModalFormGroup,
 } from './Login.styled'
+import { register } from '../../api/auth'
 
 function RegisterPage() {
-	const [firstName, setFirstName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
 	const navigate = useNavigate()
+	const [errorMsg, setErrorMsg]= useState('')
 
-	const handleRegistration = e => {
+	const [inputValue, setInputValue] = useState({
+		login: '',
+		name: '',
+		password: ''
+	})
+
+	const onChangeInput = (e) => {
+		const {value, name} = e.target
+		setInputValue({...inputValue, [name]: value})
+	}
+
+	const handlerRegister = (e) => {
 		e.preventDefault()
-		console.log('Регистрация успешна:', { firstName, email, password })
-		navigate('/');
+		const {login, name, password} = inputValue;
+
+		if(!login || !name || !password) {
+			return setErrorMsg('Заполните все поля')
+		}
+		register(inputValue).then(() => {
+			setErrorMsg('')
+			navigate('/login')
+		}).catch((err) => {
+			setErrorMsg(err.message)
+		})
 	}
 
 	return (
@@ -35,35 +54,36 @@ function RegisterPage() {
 							<h2>Регистрация</h2>
 						</div> */}
 						<Modalttl>Регистрация</Modalttl>
-						<ModalFormLogIn onSubmit={handleRegistration}>
+						<ModalFormLogIn>
 							<ModalInput
 								type='text'
-								name='first-name'
+								name='name'
 								id='first-name'
 								placeholder='Имя'
-								value={firstName}
-								onChange={e => setFirstName(e.target.value)}
+								value={inputValue.name}
+								onChange={onChangeInput}
 							/>
 							<ModalInput
 								type='text'
 								name='login'
 								id='loginReg'
 								placeholder='Эл. почта'
-								value={email}
-								onChange={e => setEmail(e.target.value)}
+								value={inputValue.email}
+								onChange={onChangeInput}
 							/>
 							<ModalInput
 								type='password'
 								name='password'
 								id='passwordFirst'
 								placeholder='Пароль'
-								value={password}
-								onChange={e => setPassword(e.target.value)}
+								value={inputValue.password}
+								onChange={onChangeInput}
 							/>
-							{/* <button className='modal__btn-signup-ent _hover01' type='submit'>
-								Зарегистрироваться
+							{/* <button className='modal__btn-signup-ent _hover01' type='button'>
+								<a onClick={handlerRegister}>Зарегистрироваться</a>
 							</button> */}
-							<ModalButtonEnter type='submit'>
+							<p style={{color: 'red'}}>{errorMsg}</p>
+							<ModalButtonEnter type='button' onClick={handlerRegister}>
 								Зарегистрироваться
 							</ModalButtonEnter>
 							<ModalFormGroup>

@@ -1,27 +1,35 @@
 import { useState, useEffect } from 'react'
 import '../App.css'
 import { cards as initialCards } from '../data'
-import PopExit from '../components/PopExit/PopExit'
-import Header from '../components/Header/Header'
+import { Header } from '../components/Header/Header'
 import PopNewCard from '../components/PopNewCard/PopNewCard'
-import PopBrowse from '../components/PopBrowse/PopBrowse'
 import Main from '../components/Main/Main'
 import { Outlet } from 'react-router-dom'
+import { getCards } from '../api/cardsApi'
 
 
-function MainPage() {
-	const [cards, setCards] = useState(initialCards)
+export const MainPage = ({isAuth}) => {
+	const [cards, setCards] = useState([])
+	const [errorMsg, setErrorMsg] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-			setTimeout(() => {
-				setIsLoading(false)
-			}, 2000)
-		}, [])
+	useEffect(() => {
+		setIsLoading(true)
+
+		getCards(isAuth.token).then(res => {
+			setErrorMsg('')
+			setCards(res.tasks)
+			setIsLoading(false)
+		}).catch((err) => {
+			setErrorMsg(err.message)
+		}).finally(() => {
+			setIsLoading(false)
+		})
+	}, [])
 
 	function onCardAdd() {
 		const newCard = {
-			id: cards.length + 1,
+			_id: cards.length + 1,
 			topic: 'Copywriting',
 			title: 'Название задачи',
 			date: new Date().toLocaleDateString(),
@@ -32,14 +40,15 @@ function MainPage() {
 
 	return (
 		<div className='wrapper'>
-			{/* pop-up start */}
-			{/* <PopExit /> */}
 			<PopNewCard />
-			{/* pop-up end */}
-			<Header onCardAdd={onCardAdd} />
-			{isLoading ? (<div className='column__title'>Данные загружаются...</div>) : (<Main cards={cards} />)}
+			<Header isAuth={isAuth} onCardAdd={onCardAdd} />
+			{isLoading ? (
+				<div className='column__title'>Данные загружаются...</div>
+			) : (
+				<Main errorMsg={errorMsg} cards={cards} />
+			)}
 			<Outlet />
 		</div>
 	)
 }
-export default MainPage
+

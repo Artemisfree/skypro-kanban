@@ -1,8 +1,8 @@
 import StyledContainer from "../../Container.styled"
-import UserComponent from "../User/PopUser"
+import { UserComponent } from '../User/PopUser'
 import { StyledHeader, StyledHeaderBlock , StyledHeaderButton, StyledHeaderNav, StyledLogo } from "./Header.styled"
 
-function Header({ onCardAdd }) {
+export const Header = ({ onCardAdd, isAuth }) => {
 	return (
 		<StyledHeader>
 			{/* <header className='header'> */}
@@ -33,8 +33,9 @@ function Header({ onCardAdd }) {
 							<a href='#popNewCard'>Создать новую задачу</a>
 						</button> */}
 						<UserComponent
-							name={'Ivan Ivanov'}
-							email={'ivan.ivanov@gmail.com'}
+							isAuth={isAuth}
+							// name={'Ivan Ivanov'}
+							// email={'ivan.ivanov@gmail.com'}
 						/>
 					</StyledHeaderNav>
 					{/* </nav> */}
@@ -46,5 +47,3 @@ function Header({ onCardAdd }) {
 		// </header>
 	)
 }
-
-export default Header

@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function PopExit() {
+function PopExit({ setIsAuth }) {
+	const navigate = useNavigate()
+	const logOut = (e) => {
+		e.preventDefault()
+		setIsAuth('')
+		navigate('/login')
+	}
 	return (
 		<div className='pop-exit' id='popExit'>
 			<div className='pop-exit__container'>
@@ -10,8 +16,8 @@ function PopExit() {
 					</div>
 					<form className='pop-exit__form' id='formExit' action='#'>
 						<div className='pop-exit__form-group'>
-							<button className='pop-exit__exit-yes _hover01'>
-								<Link to='/login'>Да, выйти</Link>
+							<button onClick={logOut} className='pop-exit__exit-yes _hover01'>
+								Да, выйти
 							</button>
 							<button className='pop-exit__exit-no _hover03'>
 								<Link to='/'>Нет, остаться</Link>
