@@ -8,15 +8,12 @@ import { statusList } from './status'
 function Main({ cards, errorMsg }) {
 	return (
 		<StyledMain>
-			{/* <main className='main'> */}
 			<StyledContainer>
 				{errorMsg ? (
 					<p>{errorMsg}</p>
 				) : (
 					<StyledMainBlock>
-						{/* <div className='main__block'> */}
 						<StyledMainContent>
-							{/* <div className='main__content'> */}
 							{statusList.map(status => (
 								<Column
 									key={status}
@@ -25,14 +22,9 @@ function Main({ cards, errorMsg }) {
 								/>
 							))}
 						</StyledMainContent>
-						{/* </div> */}
 					</StyledMainBlock>
 				)}
-				{/* <div className='container'> */}
-				{/* </div> */}
 			</StyledContainer>
-			{/* </div> */}
-			{/* </main> */}
 		</StyledMain>
 	)
 }

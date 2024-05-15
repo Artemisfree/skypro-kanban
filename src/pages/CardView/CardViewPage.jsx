@@ -1,5 +1,4 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { cards } from '../../data'
 import { topicColors, topicStyles } from '../../components/Card/topic'
 import { PopBrowse, PopBrowseContainer, PopBrowseBlock, PopBrowseContent, PopBrowseTopBlock, PopBrowseTitle, StyledTextArea } from './CardView.styled'
 import Calendar from '../../components/Calendar/Calendar'
@@ -7,22 +6,20 @@ import Calendar from '../../components/Calendar/Calendar'
 function CardViewPage() {
 	const { id } = useParams()
 	const card = cards.find(card => card.id === parseInt(id))
+
+
 	const colorStyle = topicStyles[topicColors[card.topic]] || {
 		backgroundColor: '#b4fdd1',
 		color: '#06b16e',
 	}
-
-	if (!card) {
-		return <div>Карточка не найдена</div>
-	}
-
+	
 	return (
 		<PopBrowse>
 			<PopBrowseContainer>
 				<PopBrowseBlock>
 					<PopBrowseContent>
 						<PopBrowseTopBlock>
-							<PopBrowseTitle>{card.title}</PopBrowseTitle>
+							<PopBrowseTitle>{card.title}{card._id}</PopBrowseTitle>
 							<div
 								className={`categories__theme _${topicColors[card.topic]}`}
 								style={{

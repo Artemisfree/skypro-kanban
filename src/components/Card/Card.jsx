@@ -1,46 +1,50 @@
 import * as S from "./ Card.styled";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { format } from 'date-fns'
 import { topicStyles, topicColors } from "./topic";
 
 function Card({ id, topic, date, children }) {
-	const navigate = useNavigate()
+	const formattedDate = format(new Date(date), 'dd.MM.yy')
+	// const navigate = useNavigate()
     const colorStyle = topicStyles[topicColors[topic]] || { backgroundColor: '#b4fdd1', color: '#06b16e' };
 
-    const handleClick = () => {
-			navigate(`/card/${id}`)
-		}
+    // const handleClick = () => {
+	// 		navigate(`/card/${id}`)
+	// 	}
 
     return (
-		<S.CardItem onClick={handleClick}>
-        {/* <div className='cards__item'> */}
-			<S.StyledCardBlock>
-            {/* <div className='cards__card'> */}
-				{/* <div className='card'> */}
+			<S.CardItem>
+				{/* <div className='cards__item'> */}
+				<S.StyledCardBlock>
+					{/* <div className='cards__card'> */}
+					{/* <div className='card'> */}
 					<S.StyledCardGroup>
-					{/* <div className='card__group'> */}
+						{/* <div className='card__group'> */}
 						<div
 							className={`card__theme _${topicColors[topic]}`}
-							style={{ backgroundColor: colorStyle.backgroundColor, color: colorStyle.color }}>
-							<p style={{ color: colorStyle.color }}>
-								{topic}
-							</p>
+							style={{
+								backgroundColor: colorStyle.backgroundColor,
+								color: colorStyle.color,
+							}}
+						>
+							<p style={{ color: colorStyle.color }}>{topic}</p>
 						</div>
-						<a href='#popBrowse' target='_self'>
+						<Link to={`/card/${id}`}>
 							<div className='card__btn'>
 								<div></div>
 								<div></div>
 								<div></div>
 							</div>
-						</a>
-					{/* </div> */}
+						</Link>
+						{/* </div> */}
 					</S.StyledCardGroup>
 					<S.StyledCardContent>
-					{/* <div className='card__content'> */}
-							<S.StyledCardTitle>
+						{/* <div className='card__content'> */}
+						<S.StyledCardTitle>
 							{/* <h3 className='card__title'> */}
-								{children}
+							{children}
 							{/* </h3> */}
-							</S.StyledCardTitle>
+						</S.StyledCardTitle>
 						<div className='card__date'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -65,16 +69,16 @@ function Card({ id, topic, date, children }) {
 									/>
 								</g>
 							</svg>
-							<p>{date}</p>
+							<p>{formattedDate}</p>
 						</div>
-					{/* </div> */}
+						{/* </div> */}
 					</S.StyledCardContent>
+					{/* </div> */}
+					{/* </div> */}
+				</S.StyledCardBlock>
 				{/* </div> */}
-            {/* </div> */}
-			</S.StyledCardBlock>
-        {/* </div> */}
-		</S.CardItem>
-    )
+			</S.CardItem>
+		)
 }
 
 export default Card;

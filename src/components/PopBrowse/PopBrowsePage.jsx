@@ -1,6 +1,7 @@
 import Calendar from '../Calendar/Calendar'
+import { Link } from 'react-router-dom'
 
-function PopBrowse() {
+function PopBrowsePage() {
 	return (
 		<div className='pop-browse' id='popBrowse'>
 			<div className='pop-browse__container'>
@@ -80,11 +81,7 @@ function PopBrowse() {
 										</div>
 									</div>
 									<Calendar />
-									<input
-										type='hidden'
-										id='datepick_value'
-										value='08.09.2023'
-									/>
+									<input type='hidden' id='datepick_value' value='08.09.2023' />
 									<div className='calendar__period'>
 										<p className='calendar__p date-end'>
 											Срок исполнения:{' '}
@@ -110,7 +107,7 @@ function PopBrowse() {
 								</button>
 							</div>
 							<button className='btn-browse__close _btn-bg _hover01'>
-								<a href='#'>Закрыть</a>
+								<Link to='/'>Закрыть</Link>
 							</button>
 						</div>
 						<div className='pop-browse__btn-edit _hide'>
@@ -136,7 +133,7 @@ function PopBrowse() {
 				</div>
 			</div>
 		</div>
-    )
+	)
 }
 
-export default PopBrowse
+export default PopBrowsePage

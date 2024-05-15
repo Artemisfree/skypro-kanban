@@ -3,10 +3,13 @@ import PrivateRoute from './PrivateRoute';
 import { MainPage } from '../../pages/MainPage';
 import LoginPage from '../../pages/Login/LoginPage';
 import RegisterPage from '../../pages/Login/RegisterPage'
-import CardViewPage from '../../pages/CardView/CardViewPage';
+// import CardViewPage from '../../pages/CardView/CardViewPage';
 import LogoutPage from '../../pages/Login/LogoutPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import { useState } from 'react';
+import PopBrowsePage from '../PopBrowse/PopBrowsePage';
+
+
 
 function getLocalStorage() {
 	let user = ''
@@ -30,7 +33,7 @@ export const RouterComponent = () => {
 							path='/exit'
 							element={<LogoutPage setIsAuth={setIsAuth} />}
 						/>
-						<Route path='/card/:id' element={<CardViewPage />} />
+						<Route path='/card/:id' element={<PopBrowsePage />} />
 					</Route>
 				</Route>
 				<Route path='/register' element={<RegisterPage />} />

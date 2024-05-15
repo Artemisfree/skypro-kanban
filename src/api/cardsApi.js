@@ -18,5 +18,4 @@ export const getCards = (token) => {
 			}
 			return res.json()
 		})
-		.catch()
 }

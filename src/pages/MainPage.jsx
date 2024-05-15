@@ -38,6 +38,7 @@ export const MainPage = ({isAuth}) => {
 		setCards([...cards, newCard])
 	}
 
+
 	return (
 		<div className='wrapper'>
 			<PopNewCard />

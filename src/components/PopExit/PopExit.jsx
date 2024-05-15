@@ -4,7 +4,8 @@ function PopExit({ setIsAuth }) {
 	const navigate = useNavigate()
 	const logOut = (e) => {
 		e.preventDefault()
-		setIsAuth('')
+		localStorage.removeItem('user')
+		setIsAuth(false)
 		navigate('/login')
 	}
 	return (

@@ -19,7 +19,7 @@ export const register = ({login, name, password}) => {
             throw new Error('Что-то пошло не так')
         }
         return res.json()
-    }).catch()
+    })
 }
 
 export const signIn = ({ login, password }) => {
@@ -42,5 +42,4 @@ export const signIn = ({ login, password }) => {
 			}
 			return res.json()
 		})
-		.catch()
 }
