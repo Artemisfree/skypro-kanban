@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ContainerSignIn, Modal, ModalBlock, Modalttl, ModalFormLogIn, ModalInput, ModalButtonEnter, ModalFormGroup } from './Login.styled';
 import { signIn } from '../../api/auth';
+import { UserContext } from '../../context/userContext';
 
 
-function LoginPage({setIsAuth}) {
-	const navigate = useNavigate()
-
+function LoginPage() {
+	const {loginUser} = useContext(UserContext)
 	const [errorMsg, setErrorMsg] = useState('')
 
 	const [inputValue, setInputValue] = useState({
@@ -29,9 +29,7 @@ function LoginPage({setIsAuth}) {
 		signIn(inputValue)
 			.then((res) => {
 				setErrorMsg('')
-				setIsAuth(res.user)
-				localStorage.setItem('user', JSON.stringify(res.user))
-				navigate('/')
+				loginUser(res)
 			})
 			.catch(err => {
 				setErrorMsg(err.message)

@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import '../App.css'
-import { cards as initialCards } from '../data'
 import { Header } from '../components/Header/Header'
-import PopNewCard from '../components/PopNewCard/PopNewCard'
 import Main from '../components/Main/Main'
 import { Outlet } from 'react-router-dom'
 import { getCards } from '../api/cardsApi'
+import { UserContext } from '../context/userContext'
+import { CardsContext } from '../context/cardsContext'
 
 
-export const MainPage = ({isAuth}) => {
-	const [cards, setCards] = useState([])
+export const MainPage = () => {
+	const {cards, setCards} = useContext(CardsContext)
 	const [errorMsg, setErrorMsg] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
+	const {user} = useContext(UserContext)
 
 	useEffect(() => {
 		setIsLoading(true)
 
-		getCards(isAuth.token).then(res => {
+		getCards(user.token).then(res => {
 			setErrorMsg('')
 			setCards(res.tasks)
 			setIsLoading(false)
@@ -27,22 +28,10 @@ export const MainPage = ({isAuth}) => {
 		})
 	}, [])
 
-	function onCardAdd() {
-		const newCard = {
-			_id: cards.length + 1,
-			topic: 'Copywriting',
-			title: 'Название задачи',
-			date: new Date().toLocaleDateString(),
-			status: 'Без статуса',
-		}
-		setCards([...cards, newCard])
-	}
-
 
 	return (
 		<div className='wrapper'>
-			<PopNewCard />
-			<Header isAuth={isAuth} onCardAdd={onCardAdd} />
+			<Header user={user} />
 			{isLoading ? (
 				<div className='column__title'>Данные загружаются...</div>
 			) : (

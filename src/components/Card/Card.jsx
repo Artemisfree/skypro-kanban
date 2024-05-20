@@ -1,5 +1,5 @@
 import * as S from "./ Card.styled";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { topicStyles, topicColors } from "./topic";
 

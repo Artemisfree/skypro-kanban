@@ -1,13 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
 
-function PopExit({ setIsAuth }) {
-	const navigate = useNavigate()
-	const logOut = (e) => {
-		e.preventDefault()
-		localStorage.removeItem('user')
-		setIsAuth(false)
-		navigate('/login')
-	}
+function PopExit() {
+	const {logoutUser} = useContext(UserContext)
 	return (
 		<div className='pop-exit' id='popExit'>
 			<div className='pop-exit__container'>
@@ -17,7 +13,7 @@ function PopExit({ setIsAuth }) {
 					</div>
 					<form className='pop-exit__form' id='formExit' action='#'>
 						<div className='pop-exit__form-group'>
-							<button onClick={logOut} className='pop-exit__exit-yes _hover01'>
+							<button onClick={logoutUser} className='pop-exit__exit-yes _hover01'>
 								Да, выйти
 							</button>
 							<button className='pop-exit__exit-no _hover03'>

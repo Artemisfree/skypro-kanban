@@ -3,7 +3,6 @@ import { StyledColumnTitle, StyledMainColumn } from './Column.styled'
 
 
 const Column = ({ title, cards }) => {
-	console.log(cards)
     return (
 		<StyledMainColumn>
         {/* <div className='main__column'> */}

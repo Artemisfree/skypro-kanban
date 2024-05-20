@@ -3,41 +3,23 @@ import PrivateRoute from './PrivateRoute';
 import { MainPage } from '../../pages/MainPage';
 import LoginPage from '../../pages/Login/LoginPage';
 import RegisterPage from '../../pages/Login/RegisterPage'
-// import CardViewPage from '../../pages/CardView/CardViewPage';
 import LogoutPage from '../../pages/Login/LogoutPage';
 import NotFoundPage from '../../pages/NotFoundPage';
-import { useState } from 'react';
 import PopBrowsePage from '../PopBrowse/PopBrowsePage';
-
-
-
-function getLocalStorage() {
-	let user = ''
-	try {
-		user = JSON.parse(localStorage.getItem('user'))
-		return user
-	}
-	catch (err) {
-		return ''
-	}
-}
+import PopNewCard from '../PopNewCard/PopNewCard';
 
 export const RouterComponent = () => {
-	const [isAuth, setIsAuth] = useState(getLocalStorage())
-
     return (
 			<Routes>
-				<Route element={<PrivateRoute isAuth={isAuth} />}>
-					<Route exact path='/' element={<MainPage isAuth={isAuth} />}>
-						<Route
-							path='/exit'
-							element={<LogoutPage setIsAuth={setIsAuth} />}
-						/>
+				<Route element={<PrivateRoute />}>
+					<Route exact path='/' element={<MainPage />}>
+						<Route path='/exit' element={<LogoutPage />} />
 						<Route path='/card/:id' element={<PopBrowsePage />} />
+						<Route path='/newCard' element={<PopNewCard />} />
 					</Route>
 				</Route>
 				<Route path='/register' element={<RegisterPage />} />
-				<Route path='/login' element={<LoginPage setIsAuth={setIsAuth} />} />
+				<Route path='/login' element={<LoginPage />} />
 				<Route path='*' element={<NotFoundPage />} />
 			</Routes>
 		)

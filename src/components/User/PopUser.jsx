@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-export const UserComponent = ({ isAuth }) => {
+export const UserComponent = ({ user }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const toggleVisibility = event => {
 		event.preventDefault()
@@ -15,12 +15,12 @@ export const UserComponent = ({ isAuth }) => {
 				href='#user-set-target'
 				className='header__user _hover02'
 			>
-				{isAuth.name}
+				{user.name}
 			</a>
 			{isVisible && (
 				<div className='header__pop-user-set pop-user-set' id='user-set-target'>
-					<p className='pop-user-set__name'>{isAuth.name}</p>
-					<p className='pop-user-set__mail'>{isAuth.login}</p>
+					<p className='pop-user-set__name'>{user.name}</p>
+					<p className='pop-user-set__mail'>{user.login}</p>
 					<div className='pop-user-set__theme'>
 						<p>Темная тема</p>
 						<input type='checkbox' className='checkbox' name='checkbox' />
