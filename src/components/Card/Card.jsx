@@ -5,21 +5,12 @@ import { topicStyles, topicColors } from "./topic";
 
 function Card({ id, topic, date, children }) {
 	const formattedDate = format(new Date(date), 'dd.MM.yy')
-	// const navigate = useNavigate()
     const colorStyle = topicStyles[topicColors[topic]] || { backgroundColor: '#b4fdd1', color: '#06b16e' };
-
-    // const handleClick = () => {
-	// 		navigate(`/card/${id}`)
-	// 	}
 
     return (
 			<S.CardItem>
-				{/* <div className='cards__item'> */}
 				<S.StyledCardBlock>
-					{/* <div className='cards__card'> */}
-					{/* <div className='card'> */}
 					<S.StyledCardGroup>
-						{/* <div className='card__group'> */}
 						<div
 							className={`card__theme _${topicColors[topic]}`}
 							style={{
@@ -36,14 +27,10 @@ function Card({ id, topic, date, children }) {
 								<div></div>
 							</div>
 						</Link>
-						{/* </div> */}
 					</S.StyledCardGroup>
 					<S.StyledCardContent>
-						{/* <div className='card__content'> */}
 						<S.StyledCardTitle>
-							{/* <h3 className='card__title'> */}
 							{children}
-							{/* </h3> */}
 						</S.StyledCardTitle>
 						<div className='card__date'>
 							<svg
@@ -71,12 +58,8 @@ function Card({ id, topic, date, children }) {
 							</svg>
 							<p>{formattedDate}</p>
 						</div>
-						{/* </div> */}
 					</S.StyledCardContent>
-					{/* </div> */}
-					{/* </div> */}
 				</S.StyledCardBlock>
-				{/* </div> */}
 			</S.CardItem>
 		)
 }

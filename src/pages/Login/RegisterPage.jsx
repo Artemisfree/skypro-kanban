@@ -44,15 +44,9 @@ function RegisterPage() {
 
 	return (
 		<div className='wrapper'>
-			{/* <div className='container-signup'> */}
 			<ContainerSignIn>
-				{/* <div className='modal'> */}
 				<Modal>
-					{/* <div className='modal__block'> */}
 					<ModalBlock>
-						{/* <div className='modal__ttl'>
-							<h2>Регистрация</h2>
-						</div> */}
 						<Modalttl>Регистрация</Modalttl>
 						<ModalFormLogIn>
 							<ModalInput
@@ -79,9 +73,6 @@ function RegisterPage() {
 								value={inputValue.password}
 								onChange={onChangeInput}
 							/>
-							{/* <button className='modal__btn-signup-ent _hover01' type='button'>
-								<a onClick={handlerRegister}>Зарегистрироваться</a>
-							</button> */}
 							<p style={{color: 'red'}}>{errorMsg}</p>
 							<ModalButtonEnter type='button' onClick={handlerRegister}>
 								Зарегистрироваться
@@ -93,11 +84,8 @@ function RegisterPage() {
 							</ModalFormGroup>
 						</ModalFormLogIn>
 					</ModalBlock>
-					{/* </div> */}
 				</Modal>
-				{/* </div> */}
 			</ContainerSignIn>
-			{/* </div> */}
 		</div>
 	)
 }

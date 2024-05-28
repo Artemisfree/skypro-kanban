@@ -1,12 +1,26 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
 import { topicColors, topicStyles } from '../../components/Card/topic'
 import { PopBrowse, PopBrowseContainer, PopBrowseBlock, PopBrowseContent, PopBrowseTopBlock, PopBrowseTitle, StyledTextArea } from './CardView.styled'
 import Calendar from '../../components/Calendar/Calendar'
+import { deleteCard, getCards } from '../../api/cardsApi'
 
 function CardViewPage() {
+	const { user } = useContext(UserContext)
+	const [cards, setCards] = useState([]);
 	const { id } = useParams()
 	const card = cards.find(card => card.id === parseInt(id))
 
+	const handleDelete = (card.id) => {
+		deleteCard({ token: user.token, card.id })
+			.then(data => {
+				setCards(data.tasks);
+				navigate('/')
+			})
+			.catch(error => {
+				console.error(error)
+			})
+	}
 
 	const colorStyle = topicStyles[topicColors[card.topic]] || {
 		backgroundColor: '#b4fdd1',
@@ -112,9 +126,10 @@ function CardViewPage() {
 								<button className='btn-browse__edit _btn-bor _hover03'>
 									<a href='#'>Редактировать задачу</a>
 								</button>
-								<button className='btn-browse__delete _btn-bor _hover03'>
+								{/* <button className='btn-browse__delete _btn-bor _hover03'>
 									<a href='#'>Удалить задачу</a>
-								</button>
+								</button> */}
+								<button onClick={() => handleDelete(card._id)}>Удалить</button>
 							</div>
 							<button className='btn-browse__close _btn-bg _hover01'>
 								<Link to='/'>Закрыть</Link>
