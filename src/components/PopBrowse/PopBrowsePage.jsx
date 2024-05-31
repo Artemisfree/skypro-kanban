@@ -7,6 +7,7 @@ import { topicColors, topicStyles } from '../Card/topic'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale/ru'
 import { Calendar } from './popBrowsePage.styled'
+import { statuses } from '../../data'
 
 function PopBrowsePage() {
 	const { user } = useContext(UserContext)
@@ -78,14 +79,6 @@ function PopBrowsePage() {
 
     const topicColorClass = topicColors[card.topic] || '_gray'
 	const topicStyle = topicStyles[topicColorClass]
-
-	const statuses = [
-		'Без статуса',
-		'Нужно сделать',
-		'В работе',
-		'Тестирование',
-		'Готово',
-	]
 
 	return (
 		<div className='pop-browse' id='popBrowse'>
